@@ -411,6 +411,22 @@ for (var field in person) {
 
 
 
+DEBUGGING WITH THE BROWSER DEVELOPER TOOLS:
+
+option + command + i // opend the window
+console, source, set the break point
+
+
+try {
+	// code
+} catch (error) {
+	console.log(error);
+} finally {
+	// code
+}
+
+
+
 
 
 
