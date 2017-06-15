@@ -177,20 +177,6 @@ TERNARY
 
 
 
-FUNCTIONS:
-
-function calc() {
-	console.log('Inside function!');
-};
-calc();
-
-
-// asign a variable to a function
-var calc = function (number1, number2) {
-	return number1 + number2;
-};
-calc(4, 5, 7); // return 9, ignore "7"
-
 
 
 
@@ -429,6 +415,54 @@ try {
 
 
 
+
+
+
+
+
+FUNCTIONS:
+
+
+function calc() {
+	console.log('Inside function!');
+};
+calc();
+
+
+// asign a variable to a function
+var calc = function (number1, number2) {
+	return number1 + number2;
+};
+calc(4, 5, 7); // return 9, ignore "7"
+
+
+
+closures:
+
+function generator(input) {
+	var number = input;
+	return function () {
+		return number * 2;
+	};
+}
+
+immediately invoked function:
+
+(function calc(input) {
+	var number = input;
+	return number * 2;
+})(5);
+
+
+built-in Methods:
+
+function message(message, number) {
+	console.log(message);
+	console.log(arguments); // show all the argument object
+}
+
+console.log(message.name); // "message" : name of the function
+console.log(message.length); // 2 : number of arguments
 
 
 
