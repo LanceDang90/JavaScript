@@ -472,6 +472,145 @@ console.log(message.length); // 2 : number of arguments
 
 
 
+BUILT-IN OBJECT FUNCTIONS:
+
+
+Timers Intervals:
+
+// Wait 2000s then execuate the function
+setTimeout(function() {
+	console.log('Finished!');
+}, 2000);
+
+// Run the function every 500s
+setInterval(function() {
+	console.log('Ping!');
+}, 500);
+
+
+
+// Run and clear the interval
+var interval = setInterval(function() {
+	console.log('Ping!');
+}, 500);
+
+setTimeout(function() {
+	clearInterval(interval);
+}, 2500);
+
+
+
+Transforming Formats:
+
+var a = '5';
+parseInt(a) // 5
+
+var b = 'FBB123';
+parseInt(b, 16) // Hex: 1649883
+
+var c = 10
+a.toString(); // '10'
+
+var d = 10.3;
+a.toFixed(); // 10
+
+
+
+"String Function"
+
+var string = 'Any text';
+string[2] // 'y'
+string.charAt(2) // 'y'
+string.concat(" add a new string") // "Any text add a new string"
+string.toUpperCase() // ANY TEXT
+string.split(" ") // ["Any", "text"]
+var string = "  Any text   ";
+string.trim() // 'Any text'
+
+
+"Math Object"
+
+Math.PI;
+Math.abs(-3)
+Math.round(1.27)
+Math.ceil(1.27)
+Math.floor(1.99)
+Math.E
+Math.log(Math.E)
+Math.max(1, 200, 1000)
+Math.min(1, 2, 100)
+Math.random() // 0-1
+Math.floor(Math.random() * 100) + 1 // 1-100
+
+
+
+"Date Object" // JS Date
+
+var today = new Date(); // Object
+today.toString() // Tue Jun 07 2016 10:40:46 GMT+0200
+var today = new Date(2016, 5, 26);
+var today = new Date('2016/05/20');
+Date.parse('2016/05/20')
+today.getDate() // date of the month
+today.getDay() // date of the week
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
