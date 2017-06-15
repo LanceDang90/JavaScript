@@ -173,14 +173,7 @@ TERNARY
 
 (1 == 1) ? 'Equal' : 'Not Equal';
 
-OBJECT:
 
-var var9 = {
-	name: "Lance",
-	age: "28"
-};
-console.log(var9);
-console.log(var9.name);
 
 
 
@@ -202,6 +195,59 @@ calc(4, 5, 7); // return 9, ignore "7"
 
 
 
+GLOBAL VS LOCAL:
+
+function notLocalScope() {
+	test = 'global scope';
+}
+console.log(test); // test is a global var if not using strict mode
+
+
+
+
+
+
+ARRAY:
+
+var array = [1, 2, 3];
+array.length // 3
+array[5] = 100;
+console.log(array); // [1, 2, 3, undefined, underfined, 100]
+
+array.forEach(function(element) {
+	console.log(element); // 1, 2, 3, undefined, underfined, 100
+});
+
+array.push(4); // adding to the end of the array
+array.pop(); // pop out the last element
+array.shift(); // pop out the first element
+array.unshift('new'); // adding to the begining of the array
+array.indexOf('new'); // get the index of the element's value 'new'
+array.splice(3); // get the array from index 3 - 1 to the end
+				// the old array lost the elements
+array.slice(3); // the same as above, but the old array stay untouch
+
+
+// the function run on each value of the array, and return a new array
+array.filter(function(value) {
+	return value > 2;
+});
+
+array.map(function(value)) {
+	return value * 2;
+});
+
+array.reverse(); // modify the old the array and reverse it
+
+array.concat(newArray); // the new and old array are untouch
+
+array.join(', '); // join all the elements in the array together with ','
+
+
+// reduce to the total of all the elements in the array
+array.reduce(function(total, value) {
+	return total + value;
+});
 
 
 
@@ -209,24 +255,155 @@ calc(4, 5, 7); // return 9, ignore "7"
 
 
 
+OBJECT:
+
+var person = {
+	name: "Lance",		// "name": 'Lance'
+	age: 28,
+	details: {
+		hobbies: ['Sports', 'Cooking'],
+		location: 'USA'
+	}, 
+	greet: function() {
+		console.log('Hello! I am ' + this.name);
+	}
+};
+console.log(person.name);
+console.log(person['name']);
+person.details.hobbies;
+
+person.greet(); // return Hello! I am Lance
+
+person.name = 'Yen'
+
+
+// create another object
+var anotherPerson = new Object();
+anotherPerson.name = 'Yen';
+anotherPerson.age = 28;
+anotherPerson.job = 'CS'; // create a new field
+
+
+// another way to create a new object
+var anotherPerson2 = Object.create(null);
+var anotherPerson2 = Object.create(person); // get the prototype of person object
+anotherPerson2.name = 'Anna';
+anotherPerson2.age // return 28
 
 
 
 
+var person = {
+	name: "Lance",		// "name": 'Lance'
+	age: 28
+};
+
+person.__proto__ // return the prototype of person
+person.toString(); // prototype has some built-in methods
 
 
 
+Object.prototype.greet = function () {
+	console.log("hello there, I am " + this.name);
+};
+person.greet(); // hello there!
+
+var lance = Object.create(person);
+var yen = Object.create(person);
+yen.name = "Yen";
+
+lance.greet(); // hello there, I am Lance
+yen.greet(); // hello there, I am Yen
+yen.__proto__ == person // true (not safe)
+yen.__proto__.__proto__ == Object.prototype // true
+Object.getPrototypeOf(yen) == person // true
 
 
 
+// Contructor function, create a prototype object
+function Person() {
+	this.name = 'Max';
+	this.greet = function() {
+		console.log("hello, I am " + this.name);
+	}
+}
+
+Person.prototype.greet = function () {
+	console.log('Hello');
+};
+
+
+var person = new Person();
+person.name = 'Lance';
+
+person.__proto__ == Person // false
+person.__proto__ == Person.prototype // true
+
+person instanceof Person // true
 
 
 
+// passing arguments to the constructor function
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+}
+
+var lance = new Person('Lance', 28);
+var yen = new Person('Yen', 28);
+
+
+bind(), call(), apply() are using for object
 
 
 
+// Properties with defineProperty
+var account = {
+	cash = 12000,
+	_name: 'Default',
+	withdraw: function(amount) {
+		this.cash -= amount;
+		console.log('withdraw ' + amount + ', new cash reserve is: ' + this.cash);
+	}
+};
+
+Object.defineProperty(account, 'deposit', {
+	value: function(amount) {
+		this.cash += amount;
+	}
+});
+
+Object.defineProperty(account, 'name', {
+	//value: 'ID000-1',
+	writable: true,
+	enumerable: true
+	get: function() {
+		return 'Hello';
+	}
+	set: function(name) {
+		this._name = name;
+	}
+});
+
+account.name // Hello;
 
 
+
+// built-in Methods and Properties
+var person = {
+	name: 'Max',
+	age: 27,
+	greet: function() {
+		console.log('Hello');
+	}
+}
+
+delete person.name; // delete persion.name
+'age' in person; // true
+
+for (var field in person) {
+	console.log(person[field]);
+}
 
 
 
