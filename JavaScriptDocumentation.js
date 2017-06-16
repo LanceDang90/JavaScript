@@ -563,6 +563,65 @@ today.getDay() // date of the week
 
 
 
+DOM
+
+Window Object:
+
+// the window is the global object
+window.innerWidth // the width of the window
+window.outerWidth
+innerHeight
+outerHeight
+window // showing the whole property of the window
+localStorage.setItem('key1', 1000);
+console.log(localStorage.getItem('key1')); // "1000"
+sessionStorage.setItem('key1', 1000);
+console.log(sessionStorage.getItem('key1')); // "1000", will be delete after
+window.location
+window.open('http://www.google.com');
+
+
+
+Location Object:
+
+location.host 
+location.pathname
+location.reload()
+location.replace('http://www.google.com')
+
+
+
+
+Document Object:
+
+console.log(document); // showing all the properties
+document.URL
+document.title
+document.body
+document.body.children
+document.body.children[0].textContent = 'something else';
+document.body.children[0].style.backgroundColor = 'red';
+document.body.firstChild // will get the white space
+document.body.firstElementChild
+document.body.firstElementChild.firstElementChild
+document.body.firstElementChild.nextElementSiling
+document.body.lastElementChild
+document.body.firstElementChild.firstElementChild.parentElement
+
+document.getElementByTagName('li')
+document.getElementByClassName('simple')
+document.getElementById('simple')
+
+document.querySelector('h1')
+document.querySelectorAll('.simple') // (.) is for class
+document.querySelectorAll('#easy').style.backgroundColor = 'red' // (#) is for id
+document.querySelector('.simple').firstChild.textContent = 'hello'
+
+
+
+
+
+
 
 
 
