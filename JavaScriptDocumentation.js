@@ -617,6 +617,30 @@ document.querySelectorAll('.simple') // (.) is for class
 document.querySelectorAll('#easy').style.backgroundColor = 'red' // (#) is for id
 document.querySelector('.simple').firstChild.textContent = 'hello'
 
+// create and insert element
+var p = document.createElement('P');
+p.textContent = 'A new paragraph';
+p.style.fontSize = '17px';
+
+var a = document.querySelector('a');
+a.appendChild(p);
+
+var li = document.querySelector('li');
+var b = li.firstElementChild;
+li.insertBefore(p, b);
+
+
+// Delete Element
+var a = document.querySelectorAll('a')[1]; // selete the element want to delete
+a.parentElement.removeChild(a); 
+a.remove(); // same as above
+
+
+Dialogs:
+alert('This is an alert');
+console.log(confirm('Are you sure?')); // click ok will return True 
+									   // otherwise, return False
+console.log(prompt('Your name?'));
 
 
 
@@ -624,8 +648,50 @@ document.querySelector('.simple').firstChild.textContent = 'hello'
 
 
 
+EVENT:
+
+https://developer.mozilla.org/en/docs/Web/API/EVENT
+
+Event Handler:
+// to see if the window load successfully
+window.onload = function() {
+	console.log('Window loaded!');
+};
+
+// handle the event click button
+var btn = document.querySelector('button');
+btn.onclick = function() {
+	console.log('Click!');
+};
+// Overwrite the above action
+btn.onclick = function() {
+	console.log('Also Click!');
+};
 
 
+Event Listeners:
+var btn = document.querySelector('button');
+btn.addEventListener('Click', listener1);
+
+function listener1() {
+	console.log("listener 1");
+}
+
+setTimeout(function() {
+	btn.removeEventListener('click', listener1);
+}, 2000);
+
+
+Event Behavior:
+function innerListener(event) {
+	event.stopPropagation();
+	console.log('Clicked inner!');
+}
+
+// js mouseClick event
+event.target.style.backgroundColor = 'red';
+event.clientX
+event.clientY
 
 
 
